@@ -5,12 +5,16 @@ class UsuarioController {
        const usuario = await UsuarioModel.create(req.body);
         return res.status(200).json(usuario);
     }
-    update(req, res){ 
-         
+   async update(req, res){ 
+         const usuarios = await UsuarioModel.find();
+         return res.status(200).json(usuarios);
     }
     read(req, res){   
-    }
-    delete(req, res){   
+    } 
+    async delete(req, res){   
+        const {id} = req.params
+        await UsuarioModel.findByIdAndDelete(id);
+        return res.status(200).json({"mensagem": "Usuário deletado com sucesso!"});
     }
 }
 
