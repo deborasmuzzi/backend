@@ -1,8 +1,8 @@
 const { Router } = require ("express");
-const UsuarioController = require ("./Controllers/UsuarioController");
-const SessoesController = require("./Controllers/SessoesController");
-const UsuarioValidator = require ("./Validators/UsuarioValidator.js");
-const SessosesValidator = require ("./Validators/SessoesValidator.js");
+const UsuarioController = require ("./src/Controllers/UsuarioController.js");
+const SessoesController = require("./src/Controllers/SessoesController.js");
+const UsuarioValidator = require ("./src/Validators/UsuarioValidator.js");
+const SessosesValidator = require ("./src/Validators/SessoesValidator.js");
 
 const rotas = Router();
 //usuario

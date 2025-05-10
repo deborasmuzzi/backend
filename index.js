@@ -1,5 +1,5 @@
 const app = require ("./App");
-const Loaders = require ("./Loaders/index");
+const Loaders = require ("./src/Loaders/index.js");
 
 Loaders.start ();
 
