@@ -1,8 +1,15 @@
 const SessoesModel = require ("../Models/SessoesModel");
+const UsuarioModel = require ("../Models/UsuarioModel");
 
 class SessoesController {
     async create (req, res){
         try {
+        const usuarioEncontrado = await UsuarioModel.findById(
+            req.body.id_usuario
+        );
+        if(!usuarioEncontrado)
+            return res.status(404).json({message: "Usuário não encontrado"});
+
         const sessoes = await SessoesModel.create(req.body);
         res.status(200).json(sessoes);
         } catch (error) {
@@ -26,15 +33,15 @@ class SessoesController {
     }
     async delete (req, res){
         try {
-        const { id } = req.params
+        const { id_usuario } = req.params;
 
-        const sessaoEncontrada = await SessoesModel.findById(id);
-        if (!sessaoEncontrada){
+        const sessaoEncontrada = await SessoesModel.findOne({id_usuario});
+        if (!sessaoEncontrada)
             return res.status(404).json({message: "Sessão não encontrada"});
-        }
+        console.log(sessaoEncontrada)
         await sessaoEncontrada.deleteOne();
         
-        res.status(200).json({"mensagem": "Sessão deletada com sucesso!"});
+        res.status(200).json({mensagem: "Sessão deletada com sucesso!"});
         } catch (error) {
              res
             .status(500)
