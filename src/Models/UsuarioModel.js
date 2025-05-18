@@ -17,8 +17,9 @@ const UsuarioSchema = new Schema ({
         type: String,
         unique: true,
     },
-    cargo : String,
+    cargo :{ String,
     status : String
+    }
 });
 
 UsuarioSchema.pre("save", async function (next){
