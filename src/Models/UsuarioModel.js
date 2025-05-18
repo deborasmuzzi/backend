@@ -22,13 +22,13 @@ const UsuarioSchema = new Schema ({
 });
 
 UsuarioSchema.pre("save", async function (next){
-    const user = this;
+    const usuario = this;
     
-    if(user.isModified("senha")){
+    if(usuario.isModified("senha")){
         const salt = await bcrypt.genSalt();
-        const hash = await bcrypt.hash(user.senha, salt);
+        const hash = await bcrypt.hash(usuario.senha, salt);
 
-        user.senha = hash;
+        usuario.senha = hash;
         console.log({ salt, hash });
     }
 
