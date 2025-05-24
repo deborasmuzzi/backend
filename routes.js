@@ -10,23 +10,23 @@ const verificarUsuario = require ("./src/Middlewares/verificarUsuario.js");
 
 const rotas = Router();
 //usuario
-rotas.post("/usuarios", UsuarioValidator.create, UsuarioController.create);
-rotas.get("/usuarios", verificarJwt, UsuarioController.read);
+rotas.post("/usuario", UsuarioValidator.create, UsuarioController.create);
+rotas.get("/usuarios", UsuarioController.read);
 rotas.delete(
-    "/usuarios/:id", 
+    "/usuario/:id", 
     verificarJwt,
     verificarUsuario,
     UsuarioValidator.destroy,
     UsuarioController.delete);
 rotas.put(
-    "/usuarios/:id",
+    "/usuario/:id",
     verificarJwt,
     verificarUsuario,
     UsuarioValidator.update,
     UsuarioController.update);
 
 //sessoes
-rotas.post("/sessoes", 
+rotas.post("/sessao", 
     verificarJwt,
     verificarUsuario,
     SessosesValidator.create, 
@@ -34,7 +34,7 @@ rotas.post("/sessoes",
 rotas.get("/sessoes",
     verificarJwt,
     SessoesController.read);
-rotas.delete("/sessoes/:id_usuario", 
+rotas.delete("/sessao/:id_usuario", 
     verificarJwt,
     verificarUsuario,
     SessosesValidator.destroy, 

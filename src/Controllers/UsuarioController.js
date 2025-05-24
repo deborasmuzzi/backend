@@ -4,7 +4,7 @@ class UsuarioController {
    async create(req, res){ 
     try {
         const usuario = await UsuarioModel.create(req.body);
-
+        console.log(usuario);
         const { senha, ...novoUsuario} = usuario.toObject()
         console.log(usuario);
         return res.status(200).json(novoUsuario);

@@ -13,6 +13,10 @@ const UsuarioSchema = new Schema ({
         type: String,
         select: false,
     },
+    senha2 : {
+        type: String,
+        select: false,
+    },
     nome :  {
         type: String,
         unique: true,
