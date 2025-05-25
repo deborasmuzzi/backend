@@ -5,6 +5,7 @@ const SessoesModel = require("./SessoesModel");
 const Schema = mongoose.Schema;
 
 const UsuarioSchema = new Schema ({ 
+    
     email : {
         type: String,
         unique: true,
@@ -21,8 +22,9 @@ const UsuarioSchema = new Schema ({
         type: String,
         unique: true,
     },
-    cargo :{ String,
-    status : String
+    cargo :{ 
+        type: String,
+    
     }
 });
 
