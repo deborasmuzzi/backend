@@ -22,10 +22,7 @@ const UsuarioSchema = new Schema ({
         type: String,
         unique: true,
     },
-    cargo :{ 
-        type: String,
-    
-    }
+    cargo: String,
 });
 
 UsuarioSchema.pre("save", async function (next){
