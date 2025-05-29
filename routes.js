@@ -41,4 +41,4 @@ rotas.delete("/sessao/:id_usuario",
     SessoesController.delete);
 module.exports = rotas;
 
-rotas.post("/login", AuthValidator.login, AuthController.login);
+rotas.post("/", AuthValidator.login, AuthController.login);

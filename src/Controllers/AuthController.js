@@ -19,7 +19,7 @@ class AuthController {
 
             const {senha : hashedSenha, ...usuario} =  usuarioEncontrado.toObject();
 
-            const token = jwt.sign(usuario,  process.env.JWT_SECRET,
+            const token = jwt.sign({usuario},  process.env.JWT_SECRET,
              {expiresIn: process.env.JWT_EXPIRE_IN});
 
         res.status(200).json({ token });

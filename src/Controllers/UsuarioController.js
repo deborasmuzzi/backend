@@ -4,13 +4,11 @@ class UsuarioController {
    async create(req, res){ 
     try {
         const usuario = await UsuarioModel.create(req.body);
-        console.log(usuario);
         const { senha, ...novoUsuario} = usuario.toObject()
-        console.log(usuario);
         return res.status(200).json(novoUsuario);
 
     } catch (error) {
-        res.status(500).json({message: "Deu ruim aqui", error: error.message })
+        res.status(500).json({message: "ERROR", error: error.message })
     }  
        
     }

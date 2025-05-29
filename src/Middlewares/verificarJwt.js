@@ -16,7 +16,7 @@ if(!/^Bearer$/.test(bearer))
 if(!token)
     return res.status(403).json({message: "JWT token não encontrado"});
 
-jwt.verify(token, process.env.JWT_SECRET, (err, usuario) => {
+jwt.verify(token, process.env.JWT_SECRET, (err, {usuario}) => {
     if(err)
         return res.status(403).json({message: "JWT token é inválido"});
 

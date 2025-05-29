@@ -33,7 +33,6 @@ UsuarioSchema.pre("save", async function (next){
         const hash = await bcrypt.hash(usuario.senha, salt);
 
         usuario.senha = hash;
-        console.log({ salt, hash });
     }
 
     next()

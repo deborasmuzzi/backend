@@ -5,13 +5,32 @@ const { validateRequest } = require ("zod-express-middleware");
 
 const create = validateRequest({ 
     body: z.object({ 
-        nome: z.string({required_error: "O nome é obrigatório"}),
+        nome: z.string({required_error: "O nome é obrigatório"})
+        .min(2, {
+            message: "O nome deve ter no mínimo dois caracteres"
+        })
+        .max(60, {
+            message: "O nome pode ter no máximo 60 caracteres"
+        }),
+
+
         email : z
         .string({required_error: "O email é obrigatório"})
         .email({required_error: "O email é inválido"}),
-        senha : z.string({required_error: "A senha é obrigatória"}),
-        senha2: z.string({required_error: "Confirme sua senha"}),
-        cargo : z.string({required_error: "O cargo é obrigatório"}),
+
+        senha : z.string({required_error: "A senha é obrigatória"})
+        .min(2, {
+            message: "A senha deve ter no mínimo dois caracteres"
+        }),
+
+        senha2: z.string({required_error: "Confirme sua senha"})
+        .min(2, {
+            message: "Confirme sua senha"
+        }),
+        cargo : z.string({required_error: "O cargo é obrigatório"})
+        .min(2, {
+            message: "O cargo é obrigatório"
+        }),
 
     }),
 });
