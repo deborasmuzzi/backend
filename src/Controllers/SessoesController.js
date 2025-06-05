@@ -3,6 +3,7 @@ const UsuarioModel = require ("../Models/UsuarioModel");
 
 class SessoesController {
     async create (req, res){
+        
         try {
         const usuarioEncontrado = await UsuarioModel.findById(
             req.body.id_usuario
@@ -17,7 +18,6 @@ class SessoesController {
             .status(500)
             .json({message: "Deu ruim aqui!", error: error.message});
         }
-      
     }
     async read (req, res){
         try {
@@ -38,7 +38,6 @@ class SessoesController {
         const sessaoEncontrada = await SessoesModel.findOne({id_usuario});
         if (!sessaoEncontrada)
             return res.status(404).json({message: "Sessão não encontrada"});
-        console.log(sessaoEncontrada)
         await sessaoEncontrada.deleteOne();
         
         res.status(200).json({mensagem: "Sessão deletada com sucesso!"});
