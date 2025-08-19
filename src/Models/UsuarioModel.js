@@ -22,8 +22,10 @@ const UsuarioSchema = new Schema ({
         type: String,
         unique: true,
     },
-    cargo: String,
-});
+    cargo: {
+   type: String,
+  }
+}, { timestamps: true });
 
 UsuarioSchema.pre("save", async function (next){
     const usuario = this;
